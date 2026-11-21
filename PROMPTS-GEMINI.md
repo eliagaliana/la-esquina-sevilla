@@ -36,4 +36,12 @@ Para que pesen poco: exporta en JPG con calidad 75-80 % (o pásalas por squoosh.
 
 ---
 
+## Variante: estilo ilustración de cartel de videojuego
+
+Si quieres que las fotos se parezcan más al arte promocional de los juegos de mundo abierto (ilustración pintada, colores pastel de atardecer), añade esto al final de cualquier prompt anterior en lugar de «fotografía realista»:
+
+> Estilo ilustración digital pintada a mano, como el arte promocional de un videojuego de mundo abierto: trazos pictóricos suaves, contornos limpios, iluminación de atardecer con cielo rosa, melocotón y lavanda, reflejos cian, alto contraste y colores saturados. Sin personajes reconocibles, sin texto, sin logotipos.
+
+---
+
 Consejo: genera las seis tapas en la misma sesión de Gemini y añade al final «mismo estilo de luz y color que la anterior» para que el inventario quede uniforme.

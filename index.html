@@ -15,7 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    document.documentElement.classList.add('js');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('zoom');
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -157,35 +160,50 @@
   <!-- Subtítulo de objetivo, abajo, como en los juegos -->
   <p class="objetivo" id="objetivo" aria-hidden="true"></p>
 
-  <!-- ===== Navegación fija (menú de pausa compacto) ===== -->
-  <nav class="pausebar" id="pausebar" aria-label="Secciones">
-    <a class="pausebar__icono" href="#pausa" aria-label="Abrir menú de pausa">⏸</a>
-    <a href="#carta" data-nav="carta">CARTA</a>
-    <a href="#misiones" data-nav="misiones">MISIONES</a>
-    <a href="#mapa" data-nav="mapa">MAPA</a>
-    <a href="#reservar" data-nav="reservar">RESERVAR</a>
-  </nav>
+  <!-- ===== Cabecera: logo, pestañas del menú de pausa y botón de pausa ===== -->
+  <header class="barra" id="barra">
+    <a class="barra__logo" href="#inicio" aria-label="La Esquina, volver arriba">LE</a>
+    <nav class="barra__nav" aria-label="Secciones">
+      <a href="#carta" data-nav="carta">CARTA</a>
+      <a href="#misiones" data-nav="misiones">MISIONES</a>
+      <a href="#mapa" data-nav="mapa">MAPA</a>
+      <a href="#reservar" data-nav="reservar">RESERVAR</a>
+    </nav>
+    <button class="barra__pausa" id="abrirPausa" type="button" aria-label="Abrir menú de pausa" aria-controls="pausaOverlay">⏸</button>
+  </header>
+
+  <!-- Menú de pausa a pantalla completa -->
+  <div class="pausa-overlay" id="pausaOverlay" hidden>
+    <div class="pausa__panel">
+      <p class="pausa__titulo">⏸ PAUSA</p>
+      <ul class="pausa__lista">
+        <li><a href="#carta" data-nav="carta"><span class="flecha" aria-hidden="true">▸</span>CARTA <small>Inventario de tapas</small></a></li>
+        <li><a href="#misiones" data-nav="misiones"><span class="flecha" aria-hidden="true">▸</span>MISIONES <small>Ofertas</small></a></li>
+        <li><a href="#mapa" data-nav="mapa"><span class="flecha" aria-hidden="true">▸</span>MAPA <small>Cómo llegar</small></a></li>
+        <li><a href="#reservar" data-nav="reservar"><span class="flecha" aria-hidden="true">▸</span>RESERVAR <small>Última misión</small></a></li>
+      </ul>
+      <button class="btn btn--pill" id="cerrarPausa" type="button">REANUDAR ▸</button>
+    </div>
+  </div>
 
   <main class="app">
 
-    <!-- ===== 2. Portada ===== -->
-    <header class="hero" id="inicio">
-      <!-- Collage de viñetas tipo cartel de juego -->
-      <div class="collage" role="img" aria-label="Collage: atardecer en Triana con la Giralda, la terraza de La Esquina y sus tapas">
-        <div class="panel panel--sol">
-          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+    <!-- ===== 2. Portada: intro con zoom a través del título ===== -->
+    <section class="intro" id="inicio" aria-labelledby="tituloPrincipal">
+      <div class="intro__escenario">
+        <div class="mundo" id="mundo" role="img" aria-label="Terraza de La Esquina en Triana al atardecer, con la Giralda al fondo">
+          <div class="mundo__cielo"></div>
+          <img class="mundo__foto" src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onerror="this.remove()">
+          <div class="mundo__neon"></div>
+          <svg class="mundo__escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+          <div class="mundo__sombra"></div>
         </div>
-        <div class="panel panel--portada" style="--g:linear-gradient(170deg,#FFD23F,#FF8A3D 40%,#FF3D8B 75%,#5B2A86)">
-          <img src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onerror="this.remove()">
+
+        <!-- Capa "ventana": el título recorta el mundo y crece con el scroll -->
+        <div class="ventana" id="ventana" aria-hidden="true">
+          <p class="ventana__texto">LA<br>ESQU<span id="ventanaI">I</span>NA</p>
         </div>
-        <div class="panel" style="--g:linear-gradient(160deg,#3DF2FF,#5B2A86)">
-          <img src="img/tapa-1.jpg" alt="" width="800" height="800" decoding="async" onerror="this.remove()">
-        </div>
-        <div class="panel" style="--g:linear-gradient(160deg,#FF3D8B,#FF8A3D)">
-          <img src="img/tapa-2.jpg" alt="" width="800" height="800" decoding="async" onerror="this.remove()">
-        </div>
-      </div>
-      <div class="hero__sombra"></div>
+        <p class="intro__pista" id="introPista" aria-hidden="true">DESLIZA</p>
 
       <p class="ayuda" id="ayuda">Bienvenido a <b>Triana</b>. Desliza para explorar el barrio y pide tu primera <b>caña</b>.</p>
 
@@ -212,14 +230,16 @@
         </p>
       </div>
 
-      <div class="hero__texto">
-        <h1 class="titulo titulo--xl" data-text="LA ESQUINA"><span>LA ESQUINA</span></h1>
+      <div class="hero__texto" id="heroTexto">
+        <p class="kicker">BAR DE TAPAS · DESDE SIEMPRE</p>
+        <h1 class="titulo titulo--xl" id="tituloPrincipal" data-text="LA ESQUINA"><span>LA ESQUINA</span></h1>
         <p class="hero__lugar">Triana · Sevilla</p>
         <p class="hero__frase">Cañas heladas, tapas de las de antes y la mejor puesta de sol del Guadalquivir. Dificultad: ninguna.</p>
       </div>
 
-      <a class="hero__empezar parpadeo" href="#pausa">PULSA PARA EMPEZAR <span aria-hidden="true">▾</span></a>
-    </header>
+      <a class="hero__empezar" href="#pausa"><span class="parpadeo">PULSA PARA EMPEZAR</span> <span aria-hidden="true">▾</span></a>
+      </div>
+    </section>
 
     <!-- ===== 3. Menú de pausa ===== -->
     <section class="pausa" id="pausa" aria-labelledby="pausaTitulo">
@@ -299,18 +319,21 @@
           <h3>Probar la tapa del día</h3>
           <p class="mision__recompensa"><span>RECOMPENSA</span> Croqueta extra 🎁</p>
           <p class="mision__meta">Dificultad ★☆☆ · Disponible todos los días</p>
+          <a class="pill" href="#reservar">Aceptar misión <span aria-hidden="true">→</span></a>
         </li>
         <li class="mision reveal" style="--i:1">
           <p class="mision__label"><span class="blip">A</span> MISIÓN</p>
           <h3>Venir con 4 amigos</h3>
           <p class="mision__recompensa"><span>RECOMPENSA</span> Ronda de cañas 🍻</p>
           <p class="mision__meta">Dificultad ★★☆ · Modo multijugador</p>
+          <a class="pill" href="#reservar">Aceptar misión <span aria-hidden="true">→</span></a>
         </li>
         <li class="mision reveal" style="--i:2">
           <p class="mision__label"><span class="blip">P</span> MISIÓN</p>
           <h3>Ver el partido aquí</h3>
           <p class="mision__recompensa"><span>RECOMPENSA</span> Tapa gratis con la segunda caña ⚽</p>
           <p class="mision__meta">Dificultad ★☆☆ · Días de partido</p>
+          <a class="pill" href="#reservar">Aceptar misión <span aria-hidden="true">→</span></a>
         </li>
       </ul>
     </section>
@@ -347,6 +370,19 @@
           </figure>
         </div>
         <div class="carrusel__puntos" id="carruselPuntos" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ===== Panorámica de Triana (interludio a pantalla completa) ===== -->
+    <section class="panorama" id="panorama" aria-label="Triana al atardecer">
+      <div class="panorama__arte" id="panoramaArte">
+        <div class="mundo__cielo"></div>
+        <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+      </div>
+      <div class="panorama__texto reveal">
+        <p class="kicker">BIENVENIDO A</p>
+        <p class="titulo titulo--xl" data-text="TRIANA"><span>TRIANA</span></p>
+        <p class="panorama__frase">El barrio de los alfareros, del cante y de las mejores cañas a la orilla del Guadalquivir.</p>
       </div>
     </section>
 
