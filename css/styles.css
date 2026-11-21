@@ -432,7 +432,7 @@ body::after {
 }
 .ventana__texto {
   font-family: var(--f-titulo);
-  font-size: min(31vw, 150px);
+  font-size: min(25vw, 124px);
   line-height: .86;
   letter-spacing: .01em;
   color: #fff;
