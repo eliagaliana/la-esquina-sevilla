@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>La Esquina · Bar de tapas en Triana, Sevilla</title>
+  <meta name="description" content="La Esquina, bar de tapas en Triana (Sevilla). Cañas a 2,50 €, tapas de las de antes y la mejor puesta de sol del Guadalquivir. Abierto de 12:00 a 00:00.">
+  <meta name="theme-color" content="#120A2A">
+  <meta property="og:title" content="La Esquina · Bar de tapas en Triana">
+  <meta property="og:description" content="Cañas a 2,50 €, tapas legendarias y misiones con recompensa. Calle Betis, Sevilla.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/portada.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "La Esquina",
+    "description": "Bar de tapas en Triana, Sevilla (negocio ficticio, pieza de portfolio de Weliab).",
+    "address": { "@type": "PostalAddress", "streetAddress": "Calle Betis, 27", "addressLocality": "Sevilla", "postalCode": "41010", "addressCountry": "ES" },
+    "openingHours": "Mo-Su 12:00-24:00",
+    "priceRange": "€"
+  }
+  </script>
+</head>
+<body class="is-loading">
+
+  <!-- ===== Gráficos SVG reutilizables (horizonte, palmera, estrella) ===== -->
+  <svg class="sprites" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gSol" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFD23F"/>
+        <stop offset=".5" stop-color="#FF8A3D"/>
+        <stop offset="1" stop-color="#FF3D8B"/>
+      </linearGradient>
+      <radialGradient id="gHalo">
+        <stop offset="0" stop-color="#FF3D8B" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#FF3D8B" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="gAgua" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a1150"/>
+        <stop offset="1" stop-color="#0B0620"/>
+      </linearGradient>
+      <mask id="mRayas">
+        <rect x="0" y="0" width="400" height="260" fill="#fff"/>
+        <rect x="0" y="146" width="400" height="4" fill="#000"/>
+        <rect x="0" y="160" width="400" height="6" fill="#000"/>
+        <rect x="0" y="176" width="400" height="8" fill="#000"/>
+        <rect x="0" y="194" width="400" height="10" fill="#000"/>
+        <rect x="0" y="213" width="400" height="12" fill="#000"/>
+      </mask>
+
+      <symbol id="palmera" viewBox="-60 -110 120 115">
+        <path d="M0 0 Q-7 -45 4 -88" fill="none" stroke="#0B0620" stroke-width="6" stroke-linecap="round"/>
+        <g fill="#0B0620">
+          <path d="M4 -88 Q-22 -104 -52 -82 Q-24 -94 4 -84Z"/>
+          <path d="M4 -88 Q-14 -84 -36 -56 Q-12 -78 4 -84Z"/>
+          <path d="M4 -88 Q30 -106 56 -84 Q30 -96 4 -84Z"/>
+          <path d="M4 -88 Q26 -86 44 -58 Q22 -78 4 -84Z"/>
+          <path d="M4 -88 Q0 -112 -18 -110 Q-4 -100 2 -86Z"/>
+          <path d="M4 -88 Q14 -112 30 -108 Q14 -100 6 -86Z"/>
+        </g>
+      </symbol>
+
+      <symbol id="escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+        <circle cx="200" cy="140" r="160" fill="url(#gHalo)"/>
+        <circle class="sol" cx="200" cy="140" r="98" fill="url(#gSol)" mask="url(#mRayas)"/>
+        <!-- edificios lejanos -->
+        <path fill="#3a1a5e" d="M0 210 h20 v-18 h22 v10 h30 v-24 h26 v32 h40 v-14 h34 v20 h56 v-28 h30 v16 h40 v-22 h34 v12 h30 v-8 h38 v66 H0Z"/>
+        <!-- silueta de Sevilla -->
+        <g fill="#0B0620">
+          <rect x="0" y="202" width="40" height="58"/>
+          <rect x="38" y="190" width="28" height="70"/>
+          <rect x="64" y="206" width="30" height="54"/>
+          <!-- Torre del Oro -->
+          <rect x="96" y="172" width="26" height="88"/>
+          <rect x="100" y="154" width="18" height="20"/>
+          <rect x="104" y="141" width="10" height="15"/>
+          <path d="M104 141 Q109 128 114 141Z"/>
+          <path d="M96 172 h4 v-4 h4 v4 h4 v-4 h4 v4 h4 v-4 h4 v4 h2 v2 H96Z"/>
+          <rect x="124" y="200" width="34" height="60"/>
+          <!-- catedral -->
+          <rect x="158" y="184" width="74" height="76"/>
+          <path d="M160 184 l4 -16 l4 16Z M174 184 l3 -11 l3 11Z M186 184 l5 -22 l5 22Z M202 184 l3 -11 l3 11Z M214 184 l4 -16 l4 16Z M226 184 l3 -10 l3 10Z"/>
+          <!-- Giralda -->
+          <rect x="234" y="98" width="26" height="162"/>
+          <rect x="237" y="74" width="20" height="25"/>
+          <rect x="240" y="58" width="14" height="17"/>
+          <rect x="243" y="46" width="8" height="13"/>
+          <path d="M243 46 Q247 35 251 46Z"/>
+          <rect x="246" y="22" width="2" height="16"/>
+          <path d="M247 18 l5 4 l-5 2 l-4 -3Z"/>
+          <rect x="232" y="96" width="30" height="3"/>
+          <rect x="235" y="72" width="24" height="3"/>
+          <rect x="262" y="192" width="30" height="68"/>
+          <rect x="290" y="178" width="36" height="82"/>
+          <rect x="326" y="198" width="28" height="62"/>
+          <rect x="352" y="186" width="48" height="74"/>
+        </g>
+        <!-- ventanas encendidas -->
+        <g fill="#FF3D8B">
+          <rect x="244" y="112" width="6" height="10" rx="3"/>
+          <rect x="244" y="138" width="6" height="10" rx="3"/>
+          <rect x="244" y="164" width="6" height="10" rx="3"/>
+          <rect x="240" y="80" width="5" height="11" rx="2.5"/>
+          <rect x="249" y="80" width="5" height="11" rx="2.5"/>
+          <rect x="106" y="182" width="6" height="9" rx="3"/>
+        </g>
+        <g fill="#FFD23F" opacity=".85">
+          <rect x="8" y="212" width="5" height="6"/><rect x="22" y="226" width="5" height="6"/>
+          <rect x="46" y="200" width="5" height="6"/><rect x="54" y="216" width="5" height="6"/>
+          <rect x="132" y="210" width="5" height="6"/><rect x="146" y="222" width="5" height="6"/>
+          <rect x="270" y="204" width="5" height="6"/><rect x="300" y="190" width="5" height="6"/>
+          <rect x="312" y="208" width="5" height="6"/><rect x="334" y="210" width="5" height="6"/>
+          <rect x="362" y="198" width="5" height="6"/><rect x="380" y="214" width="5" height="6"/>
+        </g>
+        <!-- palmeras -->
+        <use href="#palmera" x="-28" y="128" width="110" height="105"/>
+        <use href="#palmera" x="320" y="140" width="96" height="92"/>
+        <use href="#palmera" x="150" y="168" width="64" height="62"/>
+        <!-- río Guadalquivir con reflejos -->
+        <rect x="0" y="228" width="400" height="32" fill="url(#gAgua)"/>
+        <rect x="0" y="228" width="400" height="2" fill="#3DF2FF" opacity=".7"/>
+        <g class="reflejos">
+          <rect x="150" y="236" width="100" height="3" rx="1.5" fill="#FFD23F" opacity=".8"/>
+          <rect x="166" y="244" width="68" height="3" rx="1.5" fill="#FF8A3D" opacity=".7"/>
+          <rect x="182" y="252" width="36" height="3" rx="1.5" fill="#FF3D8B" opacity=".7"/>
+          <rect x="40" y="242" width="40" height="2" rx="1" fill="#3DF2FF" opacity=".4"/>
+          <rect x="310" y="248" width="50" height="2" rx="1" fill="#3DF2FF" opacity=".4"/>
+        </g>
+      </symbol>
+
+      <symbol id="estrella" viewBox="0 0 24 24">
+        <path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5L7 14.3l-5.3-5 7.2-.9z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== 1. Pantalla de carga ===== -->
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader__cielo"></div>
+    <svg class="loader__escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+    <div class="loader__ui">
+      <p class="titulo titulo--s" data-text="LA ESQUINA"><span>LA ESQUINA</span></p>
+      <div class="loader__barra" aria-hidden="true"><i id="loaderFill"></i></div>
+      <p class="loader__estado"><span class="parpadeo">CARGANDO…</span> <span id="loaderPct">0</span>&nbsp;%</p>
+      <p class="loader__consejo"><b>CONSEJO:</b> <span id="loaderTip">pide la tapa del día</span></p>
+    </div>
+  </div>
+
+  <!-- ===== Navegación fija (menú de pausa compacto) ===== -->
+  <nav class="pausebar" id="pausebar" aria-label="Secciones">
+    <a class="pausebar__icono" href="#pausa" aria-label="Abrir menú de pausa">⏸</a>
+    <a href="#carta" data-nav="carta">CARTA</a>
+    <a href="#misiones" data-nav="misiones">MISIONES</a>
+    <a href="#mapa" data-nav="mapa">MAPA</a>
+    <a href="#reservar" data-nav="reservar">RESERVAR</a>
+  </nav>
+
+  <main class="app">
+
+    <!-- ===== 2. Portada ===== -->
+    <header class="hero" id="inicio">
+      <div class="hero__foto" role="img" aria-label="Terraza de La Esquina en la calle Betis al atardecer">
+        <img src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onerror="this.remove()">
+      </div>
+      <div class="hero__neon"></div>
+      <svg class="hero__escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+
+      <div class="hud hud--izq">
+        <div class="minimapa" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#1d0f3d"/>
+            <path d="M-10 70 Q30 52 50 60 T110 40 V58 Q80 66 52 76 T-10 88Z" fill="#3DF2FF" opacity=".55"/>
+            <g stroke="#7d5bb0" stroke-width="5" fill="none" stroke-linecap="round">
+              <path d="M10 10 L60 40 L95 20"/><path d="M30 0 L40 55"/><path d="M70 0 L60 40"/><path d="M0 40 L60 40"/>
+            </g>
+            <circle cx="50" cy="48" r="4" fill="#FF3D8B"/>
+            <path d="M50 38 l6 14 l-6 -4 l-6 4Z" fill="#fff"/>
+          </svg>
+          <span class="minimapa__n">N</span>
+        </div>
+        <p class="hud__zona">TRIANA</p>
+      </div>
+
+      <div class="hud hud--der">
+        <p class="hud__dinero">2,50&nbsp;€ <small>CAÑA</small></p>
+        <p class="hud__estrellas" aria-label="5 estrellas">
+          <svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg>
+        </p>
+      </div>
+
+      <div class="hero__texto">
+        <p class="rotulo parpadeo">★ NUEVA PARTIDA ★</p>
+        <h1 class="titulo titulo--xl" data-text="LA ESQUINA"><span>LA ESQUINA</span></h1>
+        <p class="hero__lugar">Triana · Sevilla</p>
+        <p class="hero__frase">Cañas heladas, tapas de las de antes y la mejor puesta de sol del Guadalquivir. Dificultad: ninguna.</p>
+      </div>
+
+      <a class="hero__empezar parpadeo" href="#pausa">PULSA PARA EMPEZAR <span aria-hidden="true">▾</span></a>
+    </header>
+
+    <!-- ===== 3. Menú de pausa ===== -->
+    <section class="pausa" id="pausa" aria-labelledby="pausaTitulo">
+      <div class="pausa__panel reveal">
+        <p class="pausa__titulo" id="pausaTitulo"><span class="parpadeo">⏸</span> PAUSA</p>
+        <ul class="pausa__lista">
+          <li><a href="#carta" data-nav="carta"><span class="flecha" aria-hidden="true">▸</span>CARTA <small>Inventario de tapas</small></a></li>
+          <li><a href="#misiones" data-nav="misiones"><span class="flecha" aria-hidden="true">▸</span>MISIONES <small>Ofertas</small></a></li>
+          <li><a href="#mapa" data-nav="mapa"><span class="flecha" aria-hidden="true">▸</span>MAPA <small>Cómo llegar</small></a></li>
+          <li><a href="#reservar" data-nav="reservar"><span class="flecha" aria-hidden="true">▸</span>RESERVAR <small>Última misión</small></a></li>
+        </ul>
+        <p class="pausa__ajustes">AJUSTES · Volumen de la tertulia: <b>ALTO</b></p>
+      </div>
+    </section>
+
+    <!-- ===== 4. Carta ===== -->
+    <section class="seccion" id="carta" data-seccion aria-labelledby="cartaTitulo">
+      <p class="kicker reveal">01 · CARTA</p>
+      <h2 class="titulo titulo--l reveal" id="cartaTitulo" data-text="INVENTARIO"><span>INVENTARIO</span></h2>
+      <p class="intro reveal">Elige tu equipamiento. Todo se recarga en cocina.</p>
+
+      <ul class="inventario">
+        <li class="item reveal" style="--i:0">
+          <div class="item__foto" style="--g:linear-gradient(135deg,#FF8A3D,#5B2A86)"><img src="img/tapa-1.jpg" alt="Croquetas de puchero" width="800" height="800" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <span class="rareza rareza--leg">LEGENDARIA</span>
+          <h3>Croquetas de puchero</h3>
+          <p class="item__desc">+10 de felicidad.</p>
+          <p class="precio">2,80 €</p>
+        </li>
+        <li class="item reveal" style="--i:1">
+          <div class="item__foto" style="--g:linear-gradient(135deg,#FFD23F,#FF3D8B)"><img src="img/tapa-2.jpg" alt="Montadito de pringá" width="800" height="800" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <span class="rareza rareza--epi">ÉPICA</span>
+          <h3>Montadito de pringá</h3>
+          <p class="item__desc">El power-up de Triana.</p>
+          <p class="precio">3,00 €</p>
+        </li>
+        <li class="item reveal" style="--i:2">
+          <div class="item__foto" style="--g:linear-gradient(135deg,#3DF2FF,#5B2A86)"><img src="img/tapa-3.jpg" alt="Espinacas con garbanzos" width="800" height="800" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <span class="rareza rareza--rar">RARA</span>
+          <h3>Espinacas con garbanzos</h3>
+          <p class="item__desc">Desbloquea nostalgia.</p>
+          <p class="precio">3,20 €</p>
+        </li>
+        <li class="item reveal" style="--i:3">
+          <div class="item__foto" style="--g:linear-gradient(135deg,#FF3D8B,#120A2A)"><img src="img/tapa-4.jpg" alt="Solomillo al whisky" width="800" height="800" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <span class="rareza rareza--epi">ÉPICA</span>
+          <h3>Solomillo al whisky</h3>
+          <p class="item__desc">Pide pan. Lo vas a necesitar.</p>
+          <p class="precio">4,50 €</p>
+        </li>
+        <li class="item reveal" style="--i:4">
+          <div class="item__foto" style="--g:linear-gradient(135deg,#FF8A3D,#FFD23F)"><img src="img/tapa-5.jpg" alt="Cazón en adobo" width="800" height="800" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <span class="rareza rareza--rar">RARA</span>
+          <h3>Cazón en adobo</h3>
+          <p class="item__desc">Crujiente nivel experto.</p>
+          <p class="precio">3,80 €</p>
+        </li>
+        <li class="item reveal" style="--i:5">
+          <div class="item__foto" style="--g:linear-gradient(135deg,#5B2A86,#3DF2FF)"><img src="img/tapa-6.jpg" alt="Tortilla de patatas" width="800" height="800" loading="lazy" decoding="async" onerror="this.remove()"></div>
+          <span class="rareza rareza--com">COMÚN</span>
+          <h3>Tortilla de patatas</h3>
+          <p class="item__desc">Con cebolla. Debate cerrado.</p>
+          <p class="precio">2,50 €</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 5. Misiones ===== -->
+    <section class="seccion" id="misiones" data-seccion aria-labelledby="misionesTitulo">
+      <p class="kicker reveal">02 · OFERTAS</p>
+      <h2 class="titulo titulo--l reveal" id="misionesTitulo" data-text="MISIONES"><span>MISIONES</span></h2>
+      <p class="intro reveal">Complétalas y llévate la recompensa. Sin letra pequeña, palabrita.</p>
+
+      <ul class="misiones">
+        <li class="mision reveal" style="--i:0">
+          <p class="mision__label"><span class="parpadeo">●</span> MISIÓN</p>
+          <h3>Probar la tapa del día</h3>
+          <p class="mision__recompensa"><span>RECOMPENSA</span> Croqueta extra 🎁</p>
+          <p class="mision__meta">Dificultad ★☆☆ · Disponible todos los días</p>
+        </li>
+        <li class="mision reveal" style="--i:1">
+          <p class="mision__label"><span class="parpadeo">●</span> MISIÓN</p>
+          <h3>Venir con 4 amigos</h3>
+          <p class="mision__recompensa"><span>RECOMPENSA</span> Ronda de cañas 🍻</p>
+          <p class="mision__meta">Dificultad ★★☆ · Modo multijugador</p>
+        </li>
+        <li class="mision reveal" style="--i:2">
+          <p class="mision__label"><span class="parpadeo">●</span> MISIÓN</p>
+          <h3>Ver el partido aquí</h3>
+          <p class="mision__recompensa"><span>RECOMPENSA</span> Tapa gratis con la segunda caña ⚽</p>
+          <p class="mision__meta">Dificultad ★☆☆ · Días de partido</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 6. Nivel de fama ===== -->
+    <section class="seccion fama" id="fama" data-seccion aria-labelledby="famaTitulo">
+      <p class="kicker reveal">03 · RESEÑAS</p>
+      <h2 class="titulo titulo--l reveal" id="famaTitulo" data-text="NIVEL DE FAMA"><span>NIVEL DE FAMA</span></h2>
+
+      <div class="fama__marcador reveal">
+        <p class="fama__estrellas" id="famaEstrellas" aria-label="Nota 4,8 sobre 5">
+          <svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg><svg><use href="#estrella"/></svg>
+        </p>
+        <p class="fama__nota"><span id="famaNota">4,8</span><small>/5</small></p>
+        <p class="fama__total">312 reseñas en Google</p>
+      </div>
+
+      <div class="carrusel reveal" id="carrusel">
+        <div class="carrusel__pista" id="carruselPista" tabindex="0" aria-label="Reseñas">
+          <figure class="resena">
+            <p class="resena__estrellas" aria-label="5 estrellas">★★★★★</p>
+            <blockquote>«Las croquetas de puchero son de otro nivel. Volvería mañana.»</blockquote>
+            <figcaption>Lucía M. · <span>Jugadora habitual</span></figcaption>
+          </figure>
+          <figure class="resena">
+            <p class="resena__estrellas" aria-label="5 estrellas">★★★★★</p>
+            <blockquote>«Vinimos cuatro amigos, cayó la ronda gratis y nos quedamos hasta el cierre.»</blockquote>
+            <figcaption>Javi R. · <span>Modo multijugador</span></figcaption>
+          </figure>
+          <figure class="resena">
+            <p class="resena__estrellas" aria-label="5 estrellas">★★★★★</p>
+            <blockquote>«Ver el partido con vistas al río no tiene precio. Bueno, sí: 2,50 € la caña.»</blockquote>
+            <figcaption>Carmen G. · <span>Logro desbloqueado</span></figcaption>
+          </figure>
+        </div>
+        <div class="carrusel__puntos" id="carruselPuntos" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- ===== 7. Mapa ===== -->
+    <section class="seccion" id="mapa" data-seccion aria-labelledby="mapaTitulo">
+      <p class="kicker reveal">04 · UBICACIÓN</p>
+      <h2 class="titulo titulo--l reveal" id="mapaTitulo" data-text="MAPA"><span>MAPA</span></h2>
+      <p class="intro reveal">Objetivo: <b>Calle Betis, 27 · Triana</b>. A tres minutos del puente de Triana.</p>
+
+      <div class="radar reveal" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <defs><clipPath id="cRadar"><circle cx="150" cy="150" r="146"/></clipPath></defs>
+          <g clip-path="url(#cRadar)">
+            <rect width="300" height="300" fill="#1d0f3d"/>
+            <!-- manzanas -->
+            <g fill="#2b1656">
+              <rect x="20" y="20" width="70" height="50" rx="6"/><rect x="100" y="14" width="60" height="56" rx="6"/>
+              <rect x="170" y="20" width="80" height="46" rx="6"/><rect x="24" y="200" width="60" height="70" rx="6"/>
+              <rect x="96" y="210" width="80" height="60" rx="6"/><rect x="190" y="214" width="80" height="54" rx="6"/>
+              <rect x="210" y="76" width="70" height="30" rx="6"/>
+            </g>
+            <!-- río -->
+            <path d="M-10 110 Q80 90 150 118 T310 104 V156 Q230 160 150 168 T-10 152Z" fill="#3DF2FF" opacity=".35"/>
+            <path d="M-10 110 Q80 90 150 118 T310 104" fill="none" stroke="#3DF2FF" stroke-width="2"/>
+            <path d="M-10 152 Q80 176 150 168 T310 156" fill="none" stroke="#3DF2FF" stroke-width="2"/>
+            <!-- calles -->
+            <g stroke="#7d5bb0" stroke-width="9" fill="none" stroke-linecap="round">
+              <path d="M0 186 Q150 196 300 180"/>
+              <path d="M92 0 V100"/><path d="M60 100 L110 300"/><path d="M186 186 L180 300"/>
+              <path d="M0 82 H300"/>
+            </g>
+            <!-- puente de Triana -->
+            <rect x="52" y="100" width="18" height="86" fill="#FF8A3D" opacity=".9"/>
+            <text x="150" y="141" fill="#3DF2FF" font-family="Bungee, sans-serif" font-size="11" text-anchor="middle" letter-spacing="2">GUADALQUIVIR</text>
+            <text x="246" y="203" fill="#C9B8E8" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="10" text-anchor="middle">C/ BETIS</text>
+            <!-- ruta -->
+            <path class="radar__ruta" d="M150 296 L160 240 L176 196 L196 188" fill="none" stroke="#FFD23F" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>
+          </g>
+          <circle cx="150" cy="150" r="146" fill="none" stroke="#3DF2FF" stroke-width="4"/>
+          <text x="150" y="24" fill="#fff" font-family="Bungee, sans-serif" font-size="14" text-anchor="middle">N</text>
+        </svg>
+        <div class="pin" style="left:65.3%;top:62.7%"><span class="pin__onda"></span><span class="pin__onda pin__onda--2"></span><span class="pin__punto">🍺</span></div>
+        <p class="radar__tu">TÚ</p>
+      </div>
+
+      <a class="btn btn--cian reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Betis+27+Sevilla" target="_blank" rel="noopener">📍 MARCAR RUTA</a>
+    </section>
+
+    <!-- ===== 8. Reservar ===== -->
+    <section class="seccion final" id="reservar" data-seccion aria-labelledby="reservarTitulo">
+      <p class="kicker kicker--amarillo reveal parpadeo">05 · ÚLTIMA MISIÓN</p>
+      <h2 class="titulo titulo--l reveal" id="reservarTitulo" data-text="RESERVA TU MESA"><span>RESERVA TU MESA</span></h2>
+      <p class="intro reveal">Escríbenos por WhatsApp y te guardamos sitio. Recompensa: la mejor terraza de Triana.</p>
+      <a class="btn btn--grande reveal" id="btnReservar" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20Esquina" rel="noopener">RESERVAR ▸</a>
+      <p class="final__nota reveal">Respuesta en minutos · Sin pagar nada por adelantado</p>
+    </section>
+
+    <!-- ===== 9. Pie ===== -->
+    <footer class="pie">
+      <div class="pie__datos">
+        <p><span class="pie__label">HORARIO</span>Todos los días, de 12:00 a 00:00</p>
+        <p><span class="pie__label">DIRECCIÓN</span>Calle Betis, 27 · 41010 Triana, Sevilla</p>
+      </div>
+      <p class="pie__weliab">Web hecha por <a href="https://weliab.com" target="_blank" rel="noopener">Weliab</a></p>
+      <p class="pie__aviso">Bar ficticio · pieza de portfolio</p>
+    </footer>
+  </main>
+
+  <!-- ===== Pantalla de misión superada ===== -->
+  <div class="superada" id="superada" aria-live="assertive" hidden>
+    <p class="superada__fx" aria-hidden="true"></p>
+    <p class="titulo titulo--xl superada__titulo" data-text="¡MISIÓN SUPERADA!"><span>¡MISIÓN SUPERADA!</span></p>
+    <p class="superada__premio">+1 MESA RESERVADA</p>
+    <p class="superada__sub">Abriendo WhatsApp…</p>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
