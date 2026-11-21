@@ -241,6 +241,20 @@
       </div>
     </section>
 
+    <!-- ===== Cinemática: Triana a pantalla completa (vídeo fijo mientras haces scroll) ===== -->
+    <section class="panorama" id="panorama" aria-label="Triana al atardecer">
+      <div class="panorama__escenario">
+        <div class="panorama__arte" id="panoramaArte">
+          <video class="panorama__video" src="video/triana.mp4" poster="video/triana.jpg" muted loop playsinline preload="metadata" data-auto aria-hidden="true"></video>
+        </div>
+        <div class="panorama__texto" id="panoramaTexto">
+          <p class="kicker">BIENVENIDO A</p>
+          <p class="titulo titulo--xl" data-text="TRIANA"><span>TRIANA</span></p>
+          <p class="panorama__frase">El barrio de los alfareros, del cante y de las mejores cañas a la orilla del Guadalquivir.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== 3. Menú de pausa ===== -->
     <section class="pausa" id="pausa" aria-labelledby="pausaTitulo">
       <!-- el juego "sigue" detrás del menú de pausa -->
@@ -372,20 +386,6 @@
           </figure>
         </div>
         <div class="carrusel__puntos" id="carruselPuntos" aria-hidden="true"><i></i><i></i><i></i></div>
-      </div>
-    </section>
-
-    <!-- ===== Panorámica de Triana (interludio a pantalla completa) ===== -->
-    <section class="panorama" id="panorama" aria-label="Triana al atardecer">
-      <div class="panorama__arte" id="panoramaArte">
-        <div class="mundo__cielo"></div>
-        <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
-        <video class="panorama__video" src="video/triana.mp4" poster="video/triana.jpg" muted loop playsinline preload="none" data-auto aria-hidden="true"></video>
-      </div>
-      <div class="panorama__texto reveal">
-        <p class="kicker">BIENVENIDO A</p>
-        <p class="titulo titulo--xl" data-text="TRIANA"><span>TRIANA</span></p>
-        <p class="panorama__frase">El barrio de los alfareros, del cante y de las mejores cañas a la orilla del Guadalquivir.</p>
       </div>
     </section>
 

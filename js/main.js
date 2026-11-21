@@ -122,12 +122,22 @@
   /* ---------- Panorámica: acercamiento ligado al scroll ---------- */
   const panorama = $('#panorama');
   const panoArte = $('#panoramaArte');
+  const panoTexto = $('#panoramaTexto');
   const pintarPanorama = () => {
-    if (reduce) return;
     const r = panorama.getBoundingClientRect();
-    if (r.bottom < 0 || r.top > innerHeight) return;
-    const q = clamp((innerHeight - r.top) / (innerHeight + r.height));
-    panoArte.style.transform = `scale(${1.35 - 0.35 * easeOut(q)}) translateY(${(q - 0.5) * -30}px)`;
+    // mientras el vídeo ocupa la pantalla, fuera el subtítulo de objetivo
+    const enCine = r.top < innerHeight * 0.4 && r.bottom > innerHeight * 0.6;
+    objetivo.classList.toggle('is-oculto', enCine);
+    if (reduce || r.bottom < 0 || r.top > innerHeight) return;
+    const recorrido = panorama.offsetHeight - innerHeight;
+    // q: 0 cuando la cinemática llena la pantalla, 1 al terminar su recorrido
+    const q = recorrido > 0 ? clamp(-r.top / recorrido) : 0;
+    const entrada = clamp((innerHeight - r.top) / innerHeight); // 0→1 mientras sube a pantalla
+    panoArte.style.transform = `scale(${1.18 - 0.18 * easeOut(entrada * 0.5 + q * 0.5)})`;
+    // el título se ve al llegar y se desvanece hacia arriba: después, vídeo limpio
+    const t = clamp(q / 0.35);
+    panoTexto.style.opacity = 1 - t;
+    panoTexto.style.transform = `translateY(${-t * 60}px)`;
   };
 
   let pendiente = false;
@@ -179,7 +189,6 @@
     carta: 'Elige tu <b>tapa</b> del inventario.',
     misiones: 'Completa una <b>misión</b> y gana la recompensa.',
     fama: 'Comprueba tu <b>nivel de fama</b> en el barrio.',
-    panorama: 'Explora <b>Triana</b>.',
     mapa: 'Sigue la ruta hasta la <i>calle Betis</i>.',
     reservar: 'Reserva tu <b>mesa</b> en La Esquina.',
   };
