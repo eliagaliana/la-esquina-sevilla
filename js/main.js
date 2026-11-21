@@ -143,6 +143,17 @@
   pintarIntro();
   pintarPanorama();
 
+  /* ---------- Vídeos: solo se cargan y reproducen cuando están en pantalla ---------- */
+  if (!reduce) {
+    const videoIO = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => {
+        const v = e.target;
+        if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+      });
+    }, { rootMargin: '200px 0px' });
+    $$('video[data-auto]').forEach((v) => videoIO.observe(v));
+  }
+
   /* ---------- Entradas al hacer scroll ---------- */
   const revealIO = new IntersectionObserver((entradas) => {
     entradas.forEach((e) => {

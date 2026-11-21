@@ -193,7 +193,7 @@
       <div class="intro__escenario">
         <div class="mundo" id="mundo" role="img" aria-label="Terraza de La Esquina en Triana al atardecer, con la Giralda al fondo">
           <div class="mundo__cielo"></div>
-          <img class="mundo__foto" src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onerror="this.remove()">
+          <img class="mundo__foto" src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onload="this.parentNode.classList.add('con-foto')" onerror="this.remove()">
           <div class="mundo__neon"></div>
           <svg class="mundo__escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
           <div class="mundo__sombra"></div>
@@ -243,6 +243,8 @@
 
     <!-- ===== 3. Menú de pausa ===== -->
     <section class="pausa" id="pausa" aria-labelledby="pausaTitulo">
+      <!-- el juego "sigue" detrás del menú de pausa -->
+      <video class="pausa__video" src="video/terraza.mp4" poster="video/terraza.jpg" muted loop playsinline preload="none" data-auto aria-hidden="true"></video>
       <div class="pausa__panel reveal">
         <p class="pausa__titulo" id="pausaTitulo"><span class="parpadeo">⏸</span> PAUSA</p>
         <ul class="pausa__lista">
@@ -378,6 +380,7 @@
       <div class="panorama__arte" id="panoramaArte">
         <div class="mundo__cielo"></div>
         <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+        <video class="panorama__video" src="video/triana.mp4" poster="video/triana.jpg" muted loop playsinline preload="none" data-auto aria-hidden="true"></video>
       </div>
       <div class="panorama__texto reveal">
         <p class="kicker">BIENVENIDO A</p>
