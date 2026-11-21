@@ -52,14 +52,44 @@
 
   /* ---------- Portada: entrada escalonada tras la carga ---------- */
   function revelarPortada() {
+    const ayuda = $('#ayuda');
+    setTimeout(() => ayuda.classList.add('is-visible'), reduce ? 0 : 1500);
+    setTimeout(() => ayuda.classList.remove('is-visible'), 7500);
     if (reduce || !Element.prototype.animate) return;
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    // viñetas del collage: entran de golpe, una a una
+    $$('.collage .panel').forEach((el, i) => {
+      el.animate(
+        [{ opacity: 0, transform: 'scale(1.35)' }, { opacity: 1, transform: 'scale(1)' }],
+        { duration: 520, delay: i * 110, easing: ease, fill: 'backwards' }
+      );
+    });
     $$('.hero .hud, .hero__texto > *, .hero__empezar').forEach((el, i) => {
       el.animate(
         [{ opacity: 0, translate: '0 26px' }, { opacity: 1, translate: '0 0' }],
-        { duration: 750, delay: 60 + i * 95, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }
+        { duration: 750, delay: 520 + i * 95, easing: ease, fill: 'backwards' }
       );
     });
   }
+
+  /* ---------- Subtítulo de objetivo (cambia por sección) ---------- */
+  const objetivo = $('#objetivo');
+  const objetivos = {
+    pausa: 'Elige una opción del <b>menú</b>.',
+    carta: 'Elige tu <b>tapa</b> del inventario.',
+    misiones: 'Completa una <b>misión</b> y gana la recompensa.',
+    fama: 'Comprueba tu <b>nivel de fama</b> en el barrio.',
+    mapa: 'Sigue la ruta hasta la <i>calle Betis</i>.',
+    reservar: 'Reserva tu <b>mesa</b> en La Esquina.',
+  };
+  let objetivoActual = '';
+  const ponerObjetivo = (id) => {
+    const txt = objetivos[id];
+    if (!txt || id === objetivoActual) return;
+    objetivoActual = id;
+    objetivo.classList.add('is-cambio');
+    setTimeout(() => { objetivo.innerHTML = txt; objetivo.classList.remove('is-cambio'); }, 150);
+  };
 
   /* ---------- Entradas al hacer scroll ---------- */
   const revealIO = new IntersectionObserver((entradas) => {
@@ -73,6 +103,7 @@
   const pausebar = $('#pausebar');
   new IntersectionObserver(([e]) => {
     pausebar.classList.toggle('is-visible', !e.isIntersecting);
+    objetivo.classList.toggle('is-visible', !e.isIntersecting);
   }, { threshold: 0 }).observe($('#inicio'));
 
   const enlaces = $$('[data-nav]');
@@ -87,10 +118,12 @@
   activar('carta'); // cursor por defecto del menú de pausa
   const seccionIO = new IntersectionObserver((entradas) => {
     entradas.forEach((e) => {
-      if (e.isIntersecting) activar(alias[e.target.id] || e.target.id);
+      if (!e.isIntersecting) return;
+      if (e.target.id !== 'pausa') activar(alias[e.target.id] || e.target.id);
+      ponerObjetivo(e.target.id);
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  $$('[data-seccion]').forEach((s) => seccionIO.observe(s));
+  $$('[data-seccion], #pausa').forEach((s) => seccionIO.observe(s));
 
   /* ---------- 6. Nivel de fama: estrellas + nota ---------- */
   const estrellas = $$('#famaEstrellas svg');

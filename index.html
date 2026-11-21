@@ -13,7 +13,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js')</script>
   <script type="application/ld+json">
@@ -145,13 +145,17 @@
   <div class="loader" id="loader" role="status" aria-live="polite">
     <div class="loader__cielo"></div>
     <svg class="loader__escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
-    <div class="loader__ui">
-      <p class="titulo titulo--s" data-text="LA ESQUINA"><span>LA ESQUINA</span></p>
-      <div class="loader__barra" aria-hidden="true"><i id="loaderFill"></i></div>
-      <p class="loader__estado"><span class="parpadeo">CARGANDO…</span> <span id="loaderPct">0</span>&nbsp;%</p>
-      <p class="loader__consejo"><b>CONSEJO:</b> <span id="loaderTip">pide la tapa del día</span></p>
+    <p class="titulo titulo--xl loader__logo" data-text="LA ESQUINA"><span>LA ESQUINA</span></p>
+    <p class="loader__sub">TRIANA · SEVILLA</p>
+    <div class="loader__pie">
+      <p class="loader__consejo"><b>CONSEJO</b><span id="loaderTip">pide la tapa del día</span></p>
+      <p class="loader__estado"><i class="spinner" aria-hidden="true"></i>CARGANDO… <span id="loaderPct">0</span>&nbsp;%</p>
     </div>
+    <div class="loader__barra" aria-hidden="true"><i id="loaderFill"></i></div>
   </div>
+
+  <!-- Subtítulo de objetivo, abajo, como en los juegos -->
+  <p class="objetivo" id="objetivo" aria-hidden="true"></p>
 
   <!-- ===== Navegación fija (menú de pausa compacto) ===== -->
   <nav class="pausebar" id="pausebar" aria-label="Secciones">
@@ -166,11 +170,24 @@
 
     <!-- ===== 2. Portada ===== -->
     <header class="hero" id="inicio">
-      <div class="hero__foto" role="img" aria-label="Terraza de La Esquina en la calle Betis al atardecer">
-        <img src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onerror="this.remove()">
+      <!-- Collage de viñetas tipo cartel de juego -->
+      <div class="collage" role="img" aria-label="Collage: atardecer en Triana con la Giralda, la terraza de La Esquina y sus tapas">
+        <div class="panel panel--sol">
+          <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+        </div>
+        <div class="panel panel--portada" style="--g:linear-gradient(170deg,#FFD23F,#FF8A3D 40%,#FF3D8B 75%,#5B2A86)">
+          <img src="img/portada.jpg" alt="" width="1080" height="1920" fetchpriority="high" decoding="async" onerror="this.remove()">
+        </div>
+        <div class="panel" style="--g:linear-gradient(160deg,#3DF2FF,#5B2A86)">
+          <img src="img/tapa-1.jpg" alt="" width="800" height="800" decoding="async" onerror="this.remove()">
+        </div>
+        <div class="panel" style="--g:linear-gradient(160deg,#FF3D8B,#FF8A3D)">
+          <img src="img/tapa-2.jpg" alt="" width="800" height="800" decoding="async" onerror="this.remove()">
+        </div>
       </div>
-      <div class="hero__neon"></div>
-      <svg class="hero__escena" viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#escena"/></svg>
+      <div class="hero__sombra"></div>
+
+      <p class="ayuda" id="ayuda">Bienvenido a <b>Triana</b>. Desliza para explorar el barrio y pide tu primera <b>caña</b>.</p>
 
       <div class="hud hud--izq">
         <div class="minimapa" aria-hidden="true">
@@ -196,7 +213,6 @@
       </div>
 
       <div class="hero__texto">
-        <p class="rotulo parpadeo">★ NUEVA PARTIDA ★</p>
         <h1 class="titulo titulo--xl" data-text="LA ESQUINA"><span>LA ESQUINA</span></h1>
         <p class="hero__lugar">Triana · Sevilla</p>
         <p class="hero__frase">Cañas heladas, tapas de las de antes y la mejor puesta de sol del Guadalquivir. Dificultad: ninguna.</p>
@@ -279,19 +295,19 @@
 
       <ul class="misiones">
         <li class="mision reveal" style="--i:0">
-          <p class="mision__label"><span class="parpadeo">●</span> MISIÓN</p>
+          <p class="mision__label"><span class="blip">T</span> MISIÓN</p>
           <h3>Probar la tapa del día</h3>
           <p class="mision__recompensa"><span>RECOMPENSA</span> Croqueta extra 🎁</p>
           <p class="mision__meta">Dificultad ★☆☆ · Disponible todos los días</p>
         </li>
         <li class="mision reveal" style="--i:1">
-          <p class="mision__label"><span class="parpadeo">●</span> MISIÓN</p>
+          <p class="mision__label"><span class="blip">A</span> MISIÓN</p>
           <h3>Venir con 4 amigos</h3>
           <p class="mision__recompensa"><span>RECOMPENSA</span> Ronda de cañas 🍻</p>
           <p class="mision__meta">Dificultad ★★☆ · Modo multijugador</p>
         </li>
         <li class="mision reveal" style="--i:2">
-          <p class="mision__label"><span class="parpadeo">●</span> MISIÓN</p>
+          <p class="mision__label"><span class="blip">P</span> MISIÓN</p>
           <h3>Ver el partido aquí</h3>
           <p class="mision__recompensa"><span>RECOMPENSA</span> Tapa gratis con la segunda caña ⚽</p>
           <p class="mision__meta">Dificultad ★☆☆ · Días de partido</p>
@@ -364,13 +380,13 @@
             </g>
             <!-- puente de Triana -->
             <rect x="52" y="100" width="18" height="86" fill="#FF8A3D" opacity=".9"/>
-            <text x="150" y="141" fill="#3DF2FF" font-family="Bungee, sans-serif" font-size="11" text-anchor="middle" letter-spacing="2">GUADALQUIVIR</text>
+            <text x="150" y="141" fill="#3DF2FF" font-family="Anton, sans-serif" font-size="14" text-anchor="middle" letter-spacing="2">GUADALQUIVIR</text>
             <text x="246" y="203" fill="#C9B8E8" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="10" text-anchor="middle">C/ BETIS</text>
             <!-- ruta -->
             <path class="radar__ruta" d="M150 296 L160 240 L176 196 L196 188" fill="none" stroke="#FFD23F" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>
           </g>
           <circle cx="150" cy="150" r="146" fill="none" stroke="#3DF2FF" stroke-width="4"/>
-          <text x="150" y="24" fill="#fff" font-family="Bungee, sans-serif" font-size="14" text-anchor="middle">N</text>
+          <text x="150" y="24" fill="#fff" font-family="Anton, sans-serif" font-size="18" text-anchor="middle">N</text>
         </svg>
         <div class="pin" style="left:65.3%;top:62.7%"><span class="pin__onda"></span><span class="pin__onda pin__onda--2"></span><span class="pin__punto">🍺</span></div>
         <p class="radar__tu">TÚ</p>
@@ -384,7 +400,18 @@
       <p class="kicker kicker--amarillo reveal parpadeo">05 · ÚLTIMA MISIÓN</p>
       <h2 class="titulo titulo--l reveal" id="reservarTitulo" data-text="RESERVA TU MESA"><span>RESERVA TU MESA</span></h2>
       <p class="intro reveal">Escríbenos por WhatsApp y te guardamos sitio. Recompensa: la mejor terraza de Triana.</p>
-      <a class="btn btn--grande reveal" id="btnReservar" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20Esquina" rel="noopener">RESERVAR ▸</a>
+      <div class="movil reveal">
+        <div class="movil__estado"><span>21:47</span><span aria-hidden="true">▂▄▆ 5G ▮</span></div>
+        <div class="movil__contacto">
+          <span class="movil__avatar" aria-hidden="true">LE</span>
+          <p><b>La Esquina</b><small>en línea</small></p>
+        </div>
+        <div class="movil__chat" aria-hidden="true">
+          <p class="burbuja burbuja--yo">¿Tenéis mesa para 4 esta noche? 🍻</p>
+          <p class="burbuja">¡Claro, quillo! Dale a reservar y te la guardamos 😉</p>
+        </div>
+        <a class="btn btn--grande" id="btnReservar" href="https://wa.me/34600000000?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20Esquina" rel="noopener">RESERVAR ▸</a>
+      </div>
       <p class="final__nota reveal">Respuesta en minutos · Sin pagar nada por adelantado</p>
     </section>
 
@@ -401,9 +428,10 @@
 
   <!-- ===== Pantalla de misión superada ===== -->
   <div class="superada" id="superada" aria-live="assertive" hidden>
-    <p class="superada__fx" aria-hidden="true"></p>
-    <p class="titulo titulo--xl superada__titulo" data-text="¡MISIÓN SUPERADA!"><span>¡MISIÓN SUPERADA!</span></p>
-    <p class="superada__premio">+1 MESA RESERVADA</p>
+    <div class="superada__banda">
+      <p class="titulo superada__titulo" data-text="¡MISIÓN SUPERADA!"><span>¡MISIÓN SUPERADA!</span></p>
+      <p class="superada__premio">+1 MESA RESERVADA</p>
+    </div>
     <p class="superada__sub">Abriendo WhatsApp…</p>
   </div>
 
