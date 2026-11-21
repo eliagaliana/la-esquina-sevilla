@@ -122,7 +122,6 @@
   /* ---------- Panorámica: acercamiento ligado al scroll ---------- */
   const panorama = $('#panorama');
   const panoArte = $('#panoramaArte');
-  const panoTexto = $('#panoramaTexto');
   const pintarPanorama = () => {
     const r = panorama.getBoundingClientRect();
     // mientras el vídeo ocupa la pantalla, fuera el subtítulo de objetivo
@@ -134,10 +133,6 @@
     const q = recorrido > 0 ? clamp(-r.top / recorrido) : 0;
     const entrada = clamp((innerHeight - r.top) / innerHeight); // 0→1 mientras sube a pantalla
     panoArte.style.transform = `scale(${1.18 - 0.18 * easeOut(entrada * 0.5 + q * 0.5)})`;
-    // el título se ve al llegar y se desvanece hacia arriba: después, vídeo limpio
-    const t = clamp(q / 0.35);
-    panoTexto.style.opacity = 1 - t;
-    panoTexto.style.transform = `translateY(${-t * 60}px)`;
   };
 
   let pendiente = false;
