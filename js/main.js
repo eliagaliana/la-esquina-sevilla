@@ -120,19 +120,22 @@
   };
 
   /* ---------- Panorámica: acercamiento ligado al scroll ---------- */
-  const panorama = $('#panorama');
-  const panoArte = $('#panoramaArte');
+  // todas las cinemáticas (Triana y la misión de los amigos)
+  const cines = $$('.panorama');
   const pintarPanorama = () => {
-    const r = panorama.getBoundingClientRect();
-    // mientras el vídeo ocupa la pantalla, fuera el subtítulo de objetivo
-    const enCine = r.top < innerHeight * 0.4 && r.bottom > innerHeight * 0.6;
+    let enCine = false;
+    cines.forEach((sec) => {
+      const r = sec.getBoundingClientRect();
+      // mientras un vídeo ocupa la pantalla, fuera el subtítulo de objetivo
+      if (r.top < innerHeight * 0.4 && r.bottom > innerHeight * 0.6) enCine = true;
+      if (reduce || r.bottom < 0 || r.top > innerHeight) return;
+      const recorrido = sec.offsetHeight - innerHeight;
+      // q: 0 cuando la cinemática llena la pantalla, 1 al terminar su recorrido
+      const q = recorrido > 0 ? clamp(-r.top / recorrido) : 0;
+      const entrada = clamp((innerHeight - r.top) / innerHeight); // 0→1 mientras sube a pantalla
+      $('.panorama__arte', sec).style.transform = `scale(${1.18 - 0.18 * easeOut(entrada * 0.5 + q * 0.5)})`;
+    });
     objetivo.classList.toggle('is-oculto', enCine);
-    if (reduce || r.bottom < 0 || r.top > innerHeight) return;
-    const recorrido = panorama.offsetHeight - innerHeight;
-    // q: 0 cuando la cinemática llena la pantalla, 1 al terminar su recorrido
-    const q = recorrido > 0 ? clamp(-r.top / recorrido) : 0;
-    const entrada = clamp((innerHeight - r.top) / innerHeight); // 0→1 mientras sube a pantalla
-    panoArte.style.transform = `scale(${1.18 - 0.18 * easeOut(entrada * 0.5 + q * 0.5)})`;
   };
 
   let pendiente = false;
@@ -153,7 +156,12 @@
     const videoIO = new IntersectionObserver((entradas) => {
       entradas.forEach((e) => {
         const v = e.target;
-        if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+        if (e.isIntersecting) {
+          // los vídeos con historia empiezan desde el principio cada vez que llegas
+          if ('reinicio' in v.dataset && v.paused) v.currentTime = 0;
+          v.preload = 'auto';
+          v.play().catch(() => {});
+        } else v.pause();
       });
     }, { rootMargin: '200px 0px' });
     $$('video[data-auto]').forEach((v) => videoIO.observe(v));

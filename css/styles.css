@@ -928,3 +928,7 @@ body::after {
 
 /* el subtítulo de objetivo se esconde durante la cinemática */
 .objetivo.is-oculto { opacity: 0 !important; }
+
+/* Cinemática de la misión: vídeo vertical, centrado, y más recorrido porque dura 20 s */
+.cine-mision .panorama__video { object-position: 50% 50%; }
+.zoom .cine-mision { height: 320vh; }
